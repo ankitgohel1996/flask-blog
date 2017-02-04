@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<title>Edit</title>
+</head>
+<body>
+
+	
+	<div id="formcontainer">
+	<form action="{{url_for('edit',user=user,postid=postid)}}" method='post'>
+		Title: <input type="text" name="title" value='{{currenttitle}}'><br><br>
+		<textarea rows=10 cols=50 name="content">{{currentcontent}} </textarea> <br><br>
+		<input type="submit" name="SAVE">
+	</form>
+	</div>
+</body>

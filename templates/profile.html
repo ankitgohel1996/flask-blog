@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<title>Hello</title>
+</head>
+<body>
+	<h1> Hello, {{user}} </h1>
+	<button id="create"> Create new blog post </button> <br><br>
+	<a href="{{user}}/logout"> Logout</a>
+	<br><br><br>
+
+	<div id="formcontainer" style='display:none'>
+	<form action="/{{user}}" method='post'>
+		Title: <input type="text" name="title"><br><br>
+		<textarea rows=5 cols=30 name="content"></textarea> <br><br>
+		<input type="submit" name="SUBMIT">
+	</form>
+	</div>
+
+	<div id="showposts">
+		<ul>
+			{% for post in userposts %}
+			<li><b>{{post.title}}</b><br>
+				{{post.content}}<br>
+				<a href='{{user}}/delete/{{post.post_id}}'>Delete Post<br></a>
+			<a href='{{user}}/edit/{{post.post_id}}'>Edit Post</a><br></li><br><br>
+		{% endfor %}
+		</ul>
+	</div>
+
+ 	<script type="text/javascript"> 
+
+ 	$(document).ready(function() {
+ 		$('#create').click(function() {
+   			$("#formcontainer").toggle();
+		});
+ 	});
+
+ 	</script>
+</body>
